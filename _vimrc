@@ -89,7 +89,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'FuzzyFinder'
 
 " 代码存放在其他地方
-Bundle 'git://git.wincent.com/command-t.git'
+"Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'git://github.com/altercation/vim-colors-solarized.git'
 " ...
 
