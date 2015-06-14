@@ -44,7 +44,7 @@ set expandtab                  "将tab替换为相应数量空格
 set smartindent
 
 "######下面可根据自己的需要，可以不选用#############
-set guifont=Monaco  "gvim字体设置
+set guifont=Monaco:h14  "gvim字体设置
 set encoding=utf8               "设置内部编码为utf8
 set fileencoding=utf8            "当前编辑的文件编码
 
@@ -77,7 +77,7 @@ call vundle#rc()
 " 让 Vundle 管理 Vundle
 " 此条必须有
 Bundle 'gmarik/vundle'
-
+Bundle 'L9'
 " 比如我的 vim 插件
 "
 " 代码源在 github 上的
@@ -97,7 +97,7 @@ syntax enable
 set background=dark
 colorscheme solarized
 if has('gui_running')
-    set background=light
+    set background=dark
 else
     set background=dark
 endif
@@ -112,3 +112,16 @@ filetype plugin indent on     " 必须有
 "
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Bundle command are not allowed..
+let g:user_emmet_settings = {
+\ 'php' : {
+\ 'extends' : 'html',
+\ 'filters' : 'c',
+\ },
+\ 'xml' : {
+\ 'extends' : 'html',
+\ },
+\ 'haml' : {
+\ 'extends' : 'html',
+\ },
+\}
+let g:user_emmet_expandabbr_key = '<c-e>'
