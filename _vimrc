@@ -125,3 +125,24 @@ let g:user_emmet_settings = {
 \ },
 \}
 let g:user_emmet_expandabbr_key = '<c-e>'
+set writebackup
+if has("gui_running")
+    let g:isGUI = 1
+else
+    let g:isGUI = 0
+endif
+if g:isGUI
+    au GUIEnter * simalt ~x                           "窗口启动时自动最大化
+    "winpos 100 10                                     "指定窗口出现的位置，坐标原点在屏幕左上角
+    "set lines=38 columns=120                          "指定窗口大小，lines为高度，columns为宽度
+endif
+"Toggle Menu and Toolbar
+set guioptions-=m
+set guioptions-=T
+map <silent> <F2> :if &guioptions =~# 'T' <Bar>
+        \set guioptions-=T <Bar>
+        \set guioptions-=m <bar>
+    \else <Bar>
+        \set guioptions+=T <Bar>
+        \set guioptions+=m <Bar>
+    \endif<CR>
