@@ -84,6 +84,9 @@ Bundle 'L9'
 Bundle 'mattn/zencoding-vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'kien/ctrlp.vim'
+Bundle "godlygeek/tabular"
+Bundle "jelera/vim-javascript-syntax"
+Bundle 'Raimondi/delimitMate'
 
 " 代码存放在 vim script 上
 Bundle 'FuzzyFinder'
@@ -125,7 +128,6 @@ let g:user_emmet_settings = {
 \ },
 \}
 let g:user_emmet_expandabbr_key = '<c-e>'
-set writebackup
 if has("gui_running")
     let g:isGUI = 1
 else
@@ -146,3 +148,24 @@ map <silent> <F2> :if &guioptions =~# 'T' <Bar>
         \set guioptions+=T <Bar>
         \set guioptions+=m <Bar>
     \endif<CR>
+" Highlight current line
+au WinLeave * set nocursorline nocursorcolumn
+au WinEnter * set cursorline cursorcolumn
+set cursorline cursorcolumn
+
+" Automatically open a NERDTree if no files where specified
+autocmd vimenter * if !argc() | NERDTree | endif
+" Close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" Open a NERDTree
+nmap <F5> :NERDTreeToggle<cr>
+
+" Tagbar
+let g:tagbar_width=35
+let g:tagbar_autofocus=1
+nmap <F6> :TagbarToggle<CR>
+set mouse-=a
+
+set nowritebackup
+set nobackup
+set noswapfile
