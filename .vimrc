@@ -46,6 +46,7 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}  
 Bundle 'mattn/emmet-vim.git'
 Bundle 'altercation/vim-colors-solarized.git'
+Bundle 'Shougo/neocomplete.vim'
 
 " c) 指定非Github的Git仓库的插件，需要使用git地址  
 Bundle 'git://git.wincent.com/command-t.git'  
