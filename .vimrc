@@ -13,7 +13,6 @@ set softtabstop=4
 set expandtab                  "将tab替换为相应数量空格
 set smartindent
 
-source /usr/share/vim/vim74/autoload/php-doc.vim
 inoremap <C-P> <ESC>:call PhpDocSingle()<CR>i
 nnoremap <C-P> :call PhpDocSingle()<CR>
 vnoremap <C-P> :call PhpDocRange()<CR> 
@@ -45,11 +44,12 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-easymotion'  
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}  
 Bundle 'mattn/emmet-vim.git'
-Bundle 'altercation/vim-colors-solarized.git'
+"Bundle 'altercation/vim-colors-solarized.git'
 Bundle 'Shougo/neocomplete.vim'
-
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'scrooloose/nerdtree'
 " c) 指定非Github的Git仓库的插件，需要使用git地址  
-Bundle 'git://git.wincent.com/command-t.git'  
+"Bundle 'git://git.wincent.com/command-t.git'  
 
 "主题设置开始
 syntax enable
