@@ -1,4 +1,5 @@
 set autoindent                 "自动缩排
+set smartindent
 set linespace=8
 set ruler                      "可显示最后一行的状态
 set showmode                 "左下角那一行的状态
@@ -48,7 +49,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()  
 Bundle 'gmarik/vundle'  
 Bundle 'L9'  
-Bundle 'tpope/vim-fugitive'  
+Plugin 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-easymotion'  
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}  
 Bundle 'mattn/emmet-vim.git'
@@ -62,6 +63,7 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'scrooloose/nerdcommenter'
 Plugin 'SirVer/ultisnips'
+Plugin 'kien/ctrlp.vim'
 
 syntax enable
 set background=dark
