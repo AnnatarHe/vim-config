@@ -37,6 +37,7 @@ set nu                        "可以在每一行的最前面显示行号
 set bg=dark                   "显示不同的底色色调
 syntax on                     "进行语法检验，颜色显示
 set wrap                      "自动折行
+set linespace=8
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
@@ -44,7 +45,7 @@ set expandtab                  "将tab替换为相应数量空格
 set smartindent
 
 "######下面可根据自己的需要，可以不选用#############
-set guifont=Monaco:h14  "gvim字体设置
+set guifont=Monaco:h12  "gvim字体设置
 set encoding=utf8               "设置内部编码为utf8
 set fileencoding=utf8            "当前编辑的文件编码
 
@@ -87,7 +88,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle "godlygeek/tabular"
 Bundle "jelera/vim-javascript-syntax"
 Bundle 'Raimondi/delimitMate'
-
+Bundle 'plasticboy/vim-markdown'
 " 代码存放在 vim script 上
 Bundle 'FuzzyFinder'
 
