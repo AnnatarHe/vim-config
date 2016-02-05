@@ -27,6 +27,7 @@ function MyDiff()
   endif
   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
+
 "自己的配置
 set hlsearch                  "高亮度反白
 set backspace=2               "可随时用倒退键删除
@@ -42,9 +43,17 @@ set tabstop=4
 set softtabstop=4
 set expandtab                  "将tab替换为相应数量空格
 set smartindent
+set guioptions-=l
+set guioptions-=L
+set guioptions-=r
+set guioptions-=R
+set linespace=15
+let mapleader=";"
+vnoremap <Leader>y "+y
+nmap <Leader>p "+p
 
 "######下面可根据自己的需要，可以不选用#############
-set guifont=Monaco:h14  "gvim字体设置
+set guifont=Hack:h12  "gvim字体设置
 set encoding=utf8               "设置内部编码为utf8
 set fileencoding=utf8            "当前编辑的文件编码
 
@@ -54,14 +63,7 @@ language messages zh_CN.utf-8
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 
-filetype plugin on                                             
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-
-if &term=="xterm"
-  set t_Co=8
-  set t_Sb=^[[4%dm
-  set t_Sf=^[[3%dm
-endif
+filetype plugin on
 
 let g:neocomplcache_enable_at_startup = 1
 
@@ -71,34 +73,25 @@ filetype off                   " 必须的
 
 "set rtp+=~/.vim/bundle/vundle/
 "Windows系统下上一语句修改为
-set rtp+=$VIM/vimfiles/bundle/vundle/
-call vundle#rc()
-
-" 让 Vundle 管理 Vundle
-" 此条必须有
-Bundle 'gmarik/vundle'
-Bundle 'L9'
-" 比如我的 vim 插件
-"
-" 代码源在 github 上的
-Bundle 'mattn/zencoding-vim'
+set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
+call vundle#begin('$USERPROFILE/vimfiles/bundle/')
+Plugin 'VundleVim/Vundle.vim'
+" Bundle 'L9'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'kien/ctrlp.vim'
-Bundle "godlygeek/tabular"
-Bundle "jelera/vim-javascript-syntax"
+" Bundle 'junegunn/vim-easy-align'
+" Bundle "godlygeek/tabular"
+Bundle 'scrooloose/nerdcommenter'
+" Bundle 'SirVer/ultisnips'
+" Bundle "jelera/vim-javascript-syntax"
 Bundle 'Raimondi/delimitMate'
-
-" 代码存放在 vim script 上
-Bundle 'FuzzyFinder'
-
-" 代码存放在其他地方
-"Bundle 'git://git.wincent.com/command-t.git'
-Bundle 'git://github.com/altercation/vim-colors-solarized.git'
-" ...
+" Bundle 'FuzzyFinder'
+Bundle 'altercation/vim-colors-solarized'
+call vundle#end()            " required
+filetype plugin indent on
 
 syntax enable
-set background=dark
-colorscheme solarized
+colorscheme atom-dark
 if has('gui_running')
     set background=dark
 else
@@ -106,28 +99,7 @@ else
 endif
 
 filetype plugin indent on     " 必须有
-"
-" Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
-let g:user_emmet_settings = {
-\ 'php' : {
-\ 'extends' : 'html',
-\ 'filters' : 'c',
-\ },
-\ 'xml' : {
-\ 'extends' : 'html',
-\ },
-\ 'haml' : {
-\ 'extends' : 'html',
-\ },
-\}
-let g:user_emmet_expandabbr_key = '<c-e>'
+
 if has("gui_running")
     let g:isGUI = 1
 else
@@ -141,31 +113,16 @@ endif
 "Toggle Menu and Toolbar
 set guioptions-=m
 set guioptions-=T
-map <silent> <F2> :if &guioptions =~# 'T' <Bar>
-        \set guioptions-=T <Bar>
-        \set guioptions-=m <bar>
-    \else <Bar>
-        \set guioptions+=T <Bar>
-        \set guioptions+=m <Bar>
-    \endif<CR>
-" Highlight current line
-au WinLeave * set nocursorline nocursorcolumn
-au WinEnter * set cursorline cursorcolumn
-set cursorline cursorcolumn
-
-" Automatically open a NERDTree if no files where specified
-autocmd vimenter * if !argc() | NERDTree | endif
-" Close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-" Open a NERDTree
-nmap <F5> :NERDTreeToggle<cr>
+" set cursorline cursorcolumn
 
 " Tagbar
 let g:tagbar_width=35
 let g:tagbar_autofocus=1
-nmap <F6> :TagbarToggle<CR>
 set mouse-=a
 
 set nowritebackup
 set nobackup
 set noswapfile
+
+"----------ctrlp-settings---------------"
+" let g:ctrlp_custom_ignore = 'node_modules\DS_Store\|git'
