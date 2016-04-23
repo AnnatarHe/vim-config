@@ -51,6 +51,7 @@ set linespace=15
 let mapleader=";"
 vnoremap <Leader>y "+y
 nmap <Leader>p "+p
+nmap <Leader><space> :nohlsearch<cr>
 
 "######下面可根据自己的需要，可以不选用#############
 set guifont=Hack:h12  "gvim字体设置
@@ -76,17 +77,14 @@ filetype off                   " 必须的
 set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
 call vundle#begin('$USERPROFILE/vimfiles/bundle/')
 Plugin 'VundleVim/Vundle.vim'
-" Bundle 'L9'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'kien/ctrlp.vim'
-" Bundle 'junegunn/vim-easy-align'
-" Bundle "godlygeek/tabular"
 Bundle 'scrooloose/nerdcommenter'
-" Bundle 'SirVer/ultisnips'
-" Bundle "jelera/vim-javascript-syntax"
+Bundle 'scrooloose/nerdtree'
 Bundle 'Raimondi/delimitMate'
-" Bundle 'FuzzyFinder'
-Bundle 'altercation/vim-colors-solarized'
+Bundle 'lepture/vim-css'
+Bundle 'wavded/vim-stylus'
+"Bundle 'altercation/vim-colors-solarized'
 call vundle#end()            " required
 filetype plugin indent on
 
@@ -125,4 +123,5 @@ set nobackup
 set noswapfile
 
 "----------ctrlp-settings---------------"
-" let g:ctrlp_custom_ignore = 'node_modules\DS_Store\|git'
+let g:ctrlp_custom_ignore = 'node_modules'
+map <Leader>t :NERDTreeToggle<CR>
