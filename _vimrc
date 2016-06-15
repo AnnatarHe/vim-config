@@ -43,6 +43,7 @@ set tabstop=4
 set softtabstop=4
 set expandtab                  "将tab替换为相应数量空格
 set smartindent
+set guioptions-=e
 set guioptions-=l
 set guioptions-=L
 set guioptions-=r
@@ -54,7 +55,8 @@ nmap <Leader>p "+p
 nmap <Leader><space> :nohlsearch<cr>
 
 "######下面可根据自己的需要，可以不选用#############
-set guifont=Hack:h12  "gvim字体设置
+"set guifont=Cousine\ Powerline:h12  "gvim字体设置
+let &guifont='Hack:h12'
 set encoding=utf8               "设置内部编码为utf8
 set fileencoding=utf8            "当前编辑的文件编码
 
@@ -84,27 +86,40 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'Raimondi/delimitMate'
 Bundle 'lepture/vim-css'
 Bundle 'wavded/vim-stylus'
+Bundle 'fatih/vim-go'
+Bundle 'jdkanani/vim-material-theme'
 "Bundle 'altercation/vim-colors-solarized'
 call vundle#end()            " required
 filetype plugin indent on
 
+"syntax enable
+"set background=dark
+"colorscheme material-theme
+
 syntax enable
 colorscheme atom-dark
-if has('gui_running')
-    set background=dark
-else
-    set background=dark
-endif
+"if has('gui_running')
+    "set background=dark
+"else
+    "set background=dark
+"endif
 
 filetype plugin indent on     " 必须有
 
 if has("gui_running")
     let g:isGUI = 1
+    set guioptions=icpM
+    if has('win32') || has('win64')
+        if (v:version == 704 && has("patch393")) || v:version > 704
+            set renderoptions=type:directx,level:0.75,gamma:1.25,contrast:0.25,
+                        \geom:1,renmode:5,taamode:1
+        endif
+    endif
 else
     let g:isGUI = 0
 endif
 if g:isGUI
-    au GUIEnter * simalt ~x                           "窗口启动时自动最大化
+    "au GUIEnter * simalt ~x                           "窗口启动时自动最大化
     "winpos 100 10                                     "指定窗口出现的位置，坐标原点在屏幕左上角
     "set lines=38 columns=120                          "指定窗口大小，lines为高度，columns为宽度
 endif
@@ -121,6 +136,14 @@ set mouse-=a
 set nowritebackup
 set nobackup
 set noswapfile
+
+" powerline settings
+set laststatus=2
+let g:Powerline_symbols='fancy'
+
+
+
+
 
 "----------ctrlp-settings---------------"
 let g:ctrlp_custom_ignore = 'node_modules'
