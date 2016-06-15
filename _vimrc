@@ -79,7 +79,7 @@ filetype off                   " 必须的
 set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
 call vundle#begin('$USERPROFILE/vimfiles/bundle/')
 Plugin 'VundleVim/Vundle.vim'
-Bundle 'Lokaltog/vim-powerline'
+Bundle 'bling/vim-airline'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
@@ -139,11 +139,9 @@ set noswapfile
 
 " powerline settings
 set laststatus=2
-let g:Powerline_symbols='fancy'
-
-
-
-
+let g:airline_powerline_fonts=1
+ "设置状态栏符号显示，下面编码用双引号"
+let g:Powerline_symbols="fancy"
 
 "----------ctrlp-settings---------------"
 let g:ctrlp_custom_ignore = 'node_modules'
