@@ -1,11 +1,8 @@
 #Sumary
 This is AnnatarHe's Vim configure.
 
-sumary picture:
-<img src="images/sumary.png">
-
-NERDTree:
-<img src="images/nerdtree.png">
+Screenshot:
+[screenshot](images/gvim.png)
 
 #License
 MIT   
