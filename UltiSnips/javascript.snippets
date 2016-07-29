@@ -1,0 +1,53 @@
+snippet rfc "react function component" b
+import React from 'react'
+
+const ${1} = () => {
+	return (
+		<div>
+			${2}
+		</div>
+	)
+}
+
+export default ${1}
+
+endsnippet
+
+snippet rcc "react class component" b
+import React from 'react'
+
+class ${1} extends React.Component {
+	constructor(props) {
+		super(props)
+	}
+
+	render() {
+		return (
+			<div>
+				${2}
+			</div>
+		)
+	}
+}
+
+export default ${1}
+
+endsnippet
+
+snippet rmi "react module index page" b
+import Component from './component'
+import actions from './actions'
+import reducers from './reducers'
+const routes = {
+	path: '',
+	component: Component
+}
+
+export default {
+	Component,
+	actions,
+	reducers,
+	routes
+}
+
+endsnippet
