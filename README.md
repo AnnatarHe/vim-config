@@ -11,8 +11,12 @@ This is AnnatarHe's Vim configure.
 
 `;[space]` is unhighlight the result be search.
 
+`;y` 复制到系统剪切板
+
+`;p` 从系统剪切板粘贴内容
+
 Screenshot:
-![screenshot](images/gvim.png)
+![screenshot](images/gvim-1.png)
 
 #License
 MIT   
