@@ -39,13 +39,12 @@ filetype off                   " 必须的
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-" Plugin 'ryanoasis/vim-devicons'
 Plugin 'bling/vim-airline'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Raimondi/delimitMate'
-Plugin 'lepture/vim-css'
+Plugin 'hail2u/vim-css3-syntax'
 Plugin 'wavded/vim-stylus'
 Plugin 'fatih/vim-go'
 Plugin 'SirVer/ultisnips'
@@ -56,6 +55,7 @@ Plugin 'mxw/vim-jsx'
 Plugin 'mattn/emmet-vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'ervandew/supertab'
+Plugin 'tpope/vim-surround'
 call vundle#end()            " required
 filetype plugin indent on
 
