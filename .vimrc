@@ -56,6 +56,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-surround'
+Plugin 'dracula/vim'
 call vundle#end()            " required
 filetype plugin indent on
 
@@ -111,3 +112,4 @@ autocmd FileType html,css,javascript EmmetInstall
 
 set list
 set listchars=tab:›\ ,trail:•,extends:>,precedes:<,nbsp:.
+
