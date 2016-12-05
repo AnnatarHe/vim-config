@@ -1,7 +1,16 @@
-#Sumary
+## Sumary
+
 This is AnnatarHe's Vim configure.
 
-#  short keys
+## Font
+
+You have to install [Fria Code Font](https://github.com/)
+
+## Theme
+
+Dracula Theme
+
+## short keys
 
 `;t` is toggle NERDTree,
 
@@ -16,8 +25,5 @@ This is AnnatarHe's Vim configure.
 `;p` 从系统剪切板粘贴内容
 
 Screenshot:
-![screenshot](images/gvim-1.png)
+![screenshot](images/macvim.png)
 
-#License
-MIT   
-If you like it.Take it!!!
