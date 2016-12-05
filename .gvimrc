@@ -1,3 +1,4 @@
-set guioptions=icpM
-set guifont=Hack\ 12
+set macligatures
+set guifont=Fira\ Code:h14
 colorscheme dracula
+

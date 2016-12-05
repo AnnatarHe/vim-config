@@ -28,8 +28,12 @@ vnoremap <Leader>y "+y
 nmap <Leader>p "+p
 nmap <Leader><space> :nohlsearch<cr>
 
-set encoding=utf8               "设置内部编码为utf8
-set fileencoding=utf8            "当前编辑的文件编码
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=ucs-bom,utf-8,latin1
+set termencoding=utf-8
+" set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
+" set fileencoding=utf-8,gbk,gb18030            "当前编辑的文件编码
 
 filetype plugin on
 
@@ -47,8 +51,10 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'wavded/vim-stylus'
 Plugin 'fatih/vim-go'
+" 这里在console运行会失败
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+" 这里在console运行会失败
 Plugin 'gosukiwi/vim-atom-dark'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
@@ -64,26 +70,17 @@ syntax enable
 
 filetype plugin indent on     " 必须有
 
-" set cursorline cursorcolumn
-
-" --------------Tagbar------------------------
-" let g:tagbar_width=35
-" let g:tagbar_autofocus=1
-
 " --------------vim-javascript---------------
 let g:javascript_plugin_jsdoc=1
 let g:jsx_pragma_required=0
 
-
 " -------------airline settings---------------
 set laststatus=2
 let g:airline_powerline_fonts=1
-" let g:Powerline_symbols="fancy"
 let g:airline_symbols = {}
-" let g:airline#extensions#tabline#enabled=1
 
 " -------------ctrlp-settings---------------------
-let g:ctrlp_custom_ignore = 'node_modules'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 let g:ctrlp_open_new_file = 't'
 map <Leader>f :CtrlPMRUFiles<CR>
 map <Leader>t :NERDTreeToggle<CR>
@@ -112,4 +109,9 @@ autocmd FileType html,css,javascript EmmetInstall
 
 set list
 set listchars=tab:›\ ,trail:•,extends:>,precedes:<,nbsp:.
+
+if ! has('gui_running')
+    set t_Co=256
+    colorscheme atom-dark-256
+endif
 
