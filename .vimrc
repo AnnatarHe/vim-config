@@ -52,8 +52,10 @@ Plugin 'hail2u/vim-css3-syntax'
 Plugin 'wavded/vim-stylus'
 Plugin 'fatih/vim-go'
 " 这里在console运行会失败
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+if has("gui_running")
+    Plugin 'SirVer/ultisnips'
+    Plugin 'honza/vim-snippets'
+endif
 " 这里在console运行会失败
 Plugin 'gosukiwi/vim-atom-dark'
 Plugin 'pangloss/vim-javascript'
@@ -62,6 +64,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-surround'
+Plugin 'editorconfig/editorconfig-vim'
 Plugin 'dracula/vim'
 call vundle#end()            " required
 filetype plugin indent on
@@ -80,7 +83,7 @@ let g:airline_powerline_fonts=1
 let g:airline_symbols = {}
 
 " -------------ctrlp-settings---------------------
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store'
 let g:ctrlp_open_new_file = 't'
 map <Leader>f :CtrlPMRUFiles<CR>
 map <Leader>t :NERDTreeToggle<CR>
