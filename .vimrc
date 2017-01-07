@@ -40,39 +40,35 @@ filetype plugin on
 let g:neocomplcache_enable_at_startup = 1
 filetype off                   " 必须的
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'bling/vim-airline'
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Raimondi/delimitMate'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'wavded/vim-stylus'
-Plugin 'fatih/vim-go'
+call plug#begin('~/.vim/plugged')
+
+Plug 'bling/vim-airline'
+Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'Raimondi/delimitMate'
+Plug 'hail2u/vim-css3-syntax', { 'for': 'css' }
+Plug 'wavded/vim-stylus', { 'for': 'stylus' }
+Plug 'fatih/vim-go', { 'for': 'go' }
 " 这里在console运行会失败
 if has("gui_running")
-    Plugin 'SirVer/ultisnips'
-    Plugin 'honza/vim-snippets'
+    Plug 'SirVer/ultisnips'
+    Plug 'honza/vim-snippets'
 endif
 " 这里在console运行会失败
-Plugin 'gosukiwi/vim-atom-dark'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'mattn/emmet-vim'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'ervandew/supertab'
-Plugin 'tpope/vim-surround'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'dracula/vim'
-call vundle#end()            " required
+Plug 'gosukiwi/vim-atom-dark'
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'mxw/vim-jsx', { 'for': 'javascript' }
+Plug 'mattn/emmet-vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'ervandew/supertab'
+Plug 'tpope/vim-surround'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'dracula/vim'
+call plug#end()
 filetype plugin indent on
 
 syntax enable
-
-filetype plugin indent on     " 必须有
-
 " --------------vim-javascript---------------
 let g:javascript_plugin_jsdoc=1
 let g:jsx_pragma_required=0
@@ -109,6 +105,9 @@ let g:multi_cursor_quit_key='<Esc>'
 let g:user_emmet_mode='n'
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,javascript EmmetInstall
+
+" -------------- ale-code-lint ------------------
+let g:ale_sign_column_always = 1
 
 set list
 set listchars=tab:›\ ,trail:•,extends:>,precedes:<,nbsp:.
