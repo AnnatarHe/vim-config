@@ -106,9 +106,6 @@ let g:user_emmet_mode='n'
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,javascript EmmetInstall
 
-" -------------- ale-code-lint ------------------
-let g:ale_sign_column_always = 1
-
 set list
 set listchars=tab:›\ ,trail:•,extends:>,precedes:<,nbsp:.
 
