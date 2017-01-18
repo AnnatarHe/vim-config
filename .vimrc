@@ -36,32 +36,36 @@ filetype plugin on
 let g:neocomplcache_enable_at_startup = 1
 filetype off                   " 必须的
 
+call plug#begin('~/.vim/plugged')
+Plug 'bling/vim-airline'
+Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'Raimondi/delimitMate'
+Plug 'hail2u/vim-css3-syntax', { 'for': 'css' }
+Plug 'wavded/vim-stylus', { 'for': 'stylus' }
+Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'airblade/vim-gitgutter'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+" 这里在console运行会失败
+if has("gui_running")
+    Plug 'SirVer/ultisnips'
+    Plug 'honza/vim-snippets'
+endif
+" 这里在console运行会失败
+Plug 'gosukiwi/vim-atom-dark'
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'mxw/vim-jsx', { 'for': 'javascript.jsx' }
+Plug 'mattn/emmet-vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'ervandew/supertab'
+Plug 'tpope/vim-surround'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'dracula/vim'
+call plug#end()
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'bling/vim-airline'
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Raimondi/delimitMate'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'wavded/vim-stylus'
-Plugin 'fatih/vim-go'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'gosukiwi/vim-atom-dark'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'mattn/emmet-vim'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'ervandew/supertab'
-Plugin 'tpope/vim-surround'
-Plugin 'dracula/vim'
-call vundle#end()            " required
-filetype plugin indent on
 
 syntax enable
-
 filetype plugin indent on     " 必须有
 
 " set cursorline cursorcolumn
@@ -104,6 +108,15 @@ let g:multi_cursor_next_key='<C-m>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
+
+" -------------- git---------------------------
+set updatetime=50
+let g:gitgutter_sign_added = '＋'
+let g:gitgutter_sign_modified = '☆'
+let g:gitgutter_sign_removed = '✖'
+let g:gitgutter_sign_removed_first_line = '^^'
+let g:gitgutter_sign_modified_removed = 'ww'
+let g:airline#extensions#hunks#enabled=0
 
 " -------------emmet-settings--------------------
 let g:user_emmet_mode='n'
