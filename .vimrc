@@ -37,7 +37,9 @@ let g:neocomplcache_enable_at_startup = 1
 filetype off                   " 必须的
 
 call plug#begin('~/.vim/plugged')
-Plug 'bling/vim-airline'
+" Plug 'bling/vim-airline'
+" Plug 'tpope/vim-fugitive'
+Plug 'itchyny/lightline.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -79,16 +81,38 @@ let g:javascript_plugin_jsdoc=1
 let g:jsx_pragma_required=0
 
 
-" -------------airline settings---------------
+" -------------status line settings---------------
 set laststatus=2
 let g:airline_powerline_fonts=1
-" let g:Powerline_symbols="fancy"
+let g:lightline = {
+      \ 'colorscheme': 'jellybeans',
+      \ 'component': {
+      \   'readonly': '%{&readonly?"":""}',
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
+      \ }
+if !has('gui_running')
+    set t_Co=256
+endif
 let g:airline_symbols = {}
 " let g:airline#extensions#tabline#enabled=1
 
 " -------------ctrlp-settings---------------------
 let g:ctrlp_custom_ignore = 'node_modules'
 let g:ctrlp_open_new_file = 't'
+let g:ctrlp_buffer_func = {
+    \ 'enter': 'Enter_ctrlp',
+    \ 'exit':  'Leave_ctrlp',
+    \ }
+
+func! Enter_ctrlp()
+    set laststatus=0
+endfunc
+
+func! Leave_ctrlp()
+    set laststatus=2
+endfunc
 map <Leader>f :CtrlPMRUFiles<CR>
 map <Leader>t :NERDTreeToggle<CR>
 
@@ -121,8 +145,8 @@ let g:airline#extensions#hunks#enabled=0
 " -------------emmet-settings--------------------
 let g:user_emmet_mode='n'
 let g:user_emmet_install_global = 0
-autocmd FileType html,css,javascript EmmetInstall
+autocmd FileType html,css,javascript,javascript.jsx EmmetInstall
 
 set list
 set listchars=tab:›\ ,trail:•,extends:>,precedes:<,nbsp:.
-
+" set spell
