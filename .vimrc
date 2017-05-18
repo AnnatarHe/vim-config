@@ -18,11 +18,11 @@ set nocompatible               " 设置 vim 为不兼容 vi 模式
 "Toggle Menu and Toolbar
 set guioptions-=m
 set guioptions-=T
-set linespace=15
 set mouse-=a
 set nowritebackup
 set nobackup
 set noswapfile
+set noeb
 let mapleader=";"
 vnoremap <Leader>y "+y
 nmap <Leader>p "+p
@@ -41,8 +41,7 @@ let g:neocomplcache_enable_at_startup = 1
 filetype off                   " 必须的
 
 call plug#begin('~/.vim/plugged')
-
-Plug 'bling/vim-airline'
+Plug 'itchyny/lightline.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -50,20 +49,24 @@ Plug 'Raimondi/delimitMate'
 Plug 'hail2u/vim-css3-syntax', { 'for': 'css' }
 Plug 'wavded/vim-stylus', { 'for': 'stylus' }
 Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'airblade/vim-gitgutter'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'w0rp/ale'
 " 这里在console运行会失败
 if has("gui_running")
     Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
 endif
 " 这里在console运行会失败
-Plug 'gosukiwi/vim-atom-dark'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'mxw/vim-jsx', { 'for': 'javascript' }
+Plug 'mxw/vim-jsx', { 'for': 'javascript.jsx' }
 Plug 'mattn/emmet-vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-surround'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'rhysd/vim-color-spring-night'
+Plug 'gosukiwi/vim-atom-dark'
 Plug 'dracula/vim'
 call plug#end()
 filetype plugin indent on
@@ -76,11 +79,31 @@ let g:jsx_pragma_required=0
 " -------------airline settings---------------
 set laststatus=2
 let g:airline_powerline_fonts=1
+let g:lightline = {
+      \ 'colorscheme': 'jellybeans',
+      \ 'component': {
+      \   'readonly': '%{&readonly?"":""}',
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
+      \ }
 let g:airline_symbols = {}
 
 " -------------ctrlp-settings---------------------
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store'
 let g:ctrlp_open_new_file = 't'
+let g:ctrlp_buffer_func = {
+    \ 'enter': 'Enter_ctrlp',
+    \ 'exit':  'Leave_ctrlp',
+    \ }
+
+func! Enter_ctrlp()
+    set laststatus=0
+endfunc
+
+func! Leave_ctrlp()
+    set laststatus=2
+endfunc
 map <Leader>f :CtrlPMRUFiles<CR>
 map <Leader>t :NERDTreeToggle<CR>
 
@@ -101,16 +124,25 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
+" -------------- git---------------------------
+set updatetime=50
+let g:gitgutter_sign_added = '＋'
+let g:gitgutter_sign_modified = '☆'
+let g:gitgutter_sign_removed = '✖'
+let g:gitgutter_sign_removed_first_line = '^^'
+let g:gitgutter_sign_modified_removed = 'ww'
+let g:airline#extensions#hunks#enabled=0
+
 " -------------emmet-settings--------------------
 let g:user_emmet_mode='n'
 let g:user_emmet_install_global = 0
-autocmd FileType html,css,javascript EmmetInstall
+autocmd FileType html,css,javascript,javascript.jsx EmmetInstall
 
 set list
 set listchars=tab:›\ ,trail:•,extends:>,precedes:<,nbsp:.
+colorscheme spring-night
 
 if ! has('gui_running')
     set t_Co=256
     colorscheme atom-dark-256
 endif
-
