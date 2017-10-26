@@ -42,7 +42,6 @@ filetype off                   " 必须的
 
 call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
-Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Raimondi/delimitMate'
@@ -50,7 +49,7 @@ Plug 'hail2u/vim-css3-syntax', { 'for': 'css' }
 Plug 'wavded/vim-stylus', { 'for': 'stylus' }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'airblade/vim-gitgutter'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle'}
 Plug 'w0rp/ale'
 " 这里在console运行会失败
 if has("gui_running")
@@ -65,6 +64,13 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-surround'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-fugitive'
+
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
+
+" color schema
 Plug 'rhysd/vim-color-spring-night'
 Plug 'gosukiwi/vim-atom-dark'
 Plug 'dracula/vim'
@@ -73,8 +79,8 @@ filetype plugin indent on
 
 syntax enable
 " --------------vim-javascript---------------
-let g:javascript_plugin_jsdoc=1
-let g:jsx_pragma_required=0
+let g:javascript_plugin_jsdoc = 1
+let g:jsx_pragma_required = 0
 
 " -------------airline settings---------------
 set laststatus=2
@@ -89,23 +95,15 @@ let g:lightline = {
       \ }
 let g:airline_symbols = {}
 
-" -------------ctrlp-settings---------------------
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store'
-let g:ctrlp_open_new_file = 't'
-let g:ctrlp_buffer_func = {
-    \ 'enter': 'Enter_ctrlp',
-    \ 'exit':  'Leave_ctrlp',
-    \ }
-
-func! Enter_ctrlp()
-    set laststatus=0
-endfunc
-
-func! Leave_ctrlp()
-    set laststatus=2
-endfunc
-map <Leader>f :CtrlPMRUFiles<CR>
+" -------------fzf and ag-settings---------------------
 map <Leader>t :NERDTreeToggle<CR>
+nmap <c-p> :Files<CR>
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
+" search lines in files
+cnoreabbrev Ack Ack!
+nnoremap <Leader>f :Ack!<Space>
 
 " --------------snippets--------------------------
 let g:UltiSnipsExpandTrigger="<tab>"
