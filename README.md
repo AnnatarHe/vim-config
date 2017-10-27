@@ -20,10 +20,11 @@ Dracula Theme
 
 `;[space]` is unhighlight the result be search.
 
-`;y` 复制到系统剪切板
+`;y` copy to system clipboard
 
-`;p` 从系统剪切板粘贴内容
+`;p` paste from system clipboard
 
 Screenshot:
+
 ![screenshot](images/macvim.png)
 
