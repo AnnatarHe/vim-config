@@ -45,9 +45,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Raimondi/delimitMate'
-Plug 'hail2u/vim-css3-syntax', { 'for': 'css' }
-Plug 'wavded/vim-stylus', { 'for': 'stylus' }
-Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle'}
 Plug 'w0rp/ale'
@@ -57,8 +54,7 @@ if has("gui_running")
     Plug 'honza/vim-snippets'
 endif
 " 这里在console运行会失败
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'mxw/vim-jsx', { 'for': 'javascript.jsx' }
+Plug 'sheerun/vim-polyglot'
 Plug 'mattn/emmet-vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'ervandew/supertab'
@@ -74,6 +70,7 @@ Plug 'mileszs/ack.vim'
 Plug 'rhysd/vim-color-spring-night'
 Plug 'gosukiwi/vim-atom-dark'
 Plug 'dracula/vim'
+Plug 'joshdick/onedark.vim'
 call plug#end()
 filetype plugin indent on
 
@@ -86,15 +83,24 @@ let g:jsx_pragma_required = 0
 set laststatus=2
 let g:airline_powerline_fonts=1
 let g:lightline = {
-      \ 'colorscheme': 'jellybeans',
+      \ 'colorscheme': 'onedark',
       \ 'component': {
       \   'readonly': '%{&readonly?"":""}',
       \ },
-      \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '', 'right': '' }
+      \ 'separator': { 'left': '|', 'right': '|' },
+      \ 'subseparator': { 'left': '<', 'right': '>' }
       \ }
 let g:airline_symbols = {}
 
+
+" let g:lightline = {
+      " \ 'colorscheme': 'jellybeans',
+      " \ 'component': {
+      " \   'readonly': '%{&readonly?"":""}',
+      " \ },
+      " \ 'separator': { 'left': '', 'right': '' },
+      " \ 'subseparator': { 'left': '', 'right': '' }
+      " \ }
 " -------------fzf and ag-settings---------------------
 map <Leader>t :NERDTreeToggle<CR>
 nmap <c-p> :Files<CR>
@@ -138,7 +144,6 @@ autocmd FileType html,css,javascript,javascript.jsx EmmetInstall
 
 set list
 set listchars=tab:›\ ,trail:•,extends:>,precedes:<,nbsp:.
-colorscheme spring-night
 
 if ! has('gui_running')
     set t_Co=256
