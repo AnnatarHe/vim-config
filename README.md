@@ -8,6 +8,8 @@
 
 主题样式是 Dracula Theme
 
+请首先安装 [fzf](https://github.com/junegunn/fzf) 和 [ag](https://github.com/ggreer/the_silver_searcher)
+
 ## short keys
 
 `;t` 展开/关闭 目录,
@@ -21,6 +23,10 @@
 `;y` 复制进入系统剪切板
 
 `;p` 从系统剪贴板粘贴
+
+`Ctrl-p` 搜索
+
+`;f` 行内搜索
 
 Screenshot:
 
