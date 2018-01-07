@@ -55,15 +55,19 @@ if has("gui_running")
 endif
 " 这里在console运行会失败
 Plug 'sheerun/vim-polyglot'
+Plug 'fatih/vim-go'
 Plug 'mattn/emmet-vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-surround'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-fugitive'
+Plug 'styled-components/vim-styled-components'
+Plug 'wakatime/vim-wakatime'
 
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
+" Plug '/usr/local/opt/fzf'
+" Plug 'junegunn/fzf.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
 
 " color schema
@@ -82,30 +86,30 @@ let g:jsx_pragma_required = 0
 " -------------airline settings---------------
 set laststatus=2
 let g:airline_powerline_fonts=1
-let g:lightline = {
-      \ 'colorscheme': 'onedark',
-      \ 'component': {
-      \   'readonly': '%{&readonly?"":""}',
-      \ },
-      \ 'separator': { 'left': '|', 'right': '|' },
-      \ 'subseparator': { 'left': '<', 'right': '>' }
-      \ }
-let g:airline_symbols = {}
-
-
 " let g:lightline = {
-      " \ 'colorscheme': 'jellybeans',
+      " \ 'colorscheme': 'onedark',
       " \ 'component': {
       " \   'readonly': '%{&readonly?"":""}',
       " \ },
-      " \ 'separator': { 'left': '', 'right': '' },
-      " \ 'subseparator': { 'left': '', 'right': '' }
+      " \ 'separator': { 'left': '|', 'right': '|' },
+      " \ 'subseparator': { 'left': '<', 'right': '>' }
       " \ }
+let g:airline_symbols = {}
+
+
+let g:lightline = {
+      \ 'colorscheme': 'jellybeans',
+      \ 'component': {
+      \   'readonly': '%{&readonly?"":""}',
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
+      \ }
 " -------------fzf and ag-settings---------------------
 map <Leader>t :NERDTreeToggle<CR>
 nmap <c-p> :Files<CR>
 if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
+    let g:ackprg = 'ag --vimgrep --ignore node_modules --ignore dist'
 endif
 " search lines in files
 cnoreabbrev Ack Ack!
@@ -149,3 +153,21 @@ if ! has('gui_running')
     set t_Co=256
     colorscheme atom-dark-256
 endif
+
+" -------------ctrlp-settings---------------------
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|compiled\|dist'
+let g:ctrlp_open_new_file = 't'
+let g:ctrlp_buffer_func = {
+    \ 'enter': 'Enter_ctrlp',
+    \ 'exit':  'Leave_ctrlp',
+    \ }
+
+func! Enter_ctrlp()
+    set laststatus=0
+endfunc
+
+func! Leave_ctrlp()
+    set laststatus=2
+endfunc
+map <Leader>r :CtrlPMRUFiles<CR>
+
