@@ -4,9 +4,9 @@ set ruler                     "可显示最后一行的状态
 set showmode                  "左下角那一行的状态
 set number                    "可以在每一行的最前面显示行号
 set wrap                      "自动折行
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
 set expandtab                  "将tab替换为相应数量空格
 set smartindent
 set guioptions-=e
@@ -62,7 +62,7 @@ Plug 'ervandew/supertab'
 Plug 'tpope/vim-surround'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-fugitive'
-Plug 'styled-components/vim-styled-components'
+" Plug 'styled-components/vim-styled-components'
 Plug 'wakatime/vim-wakatime'
 
 " Plug '/usr/local/opt/fzf'
@@ -86,21 +86,13 @@ let g:jsx_pragma_required = 0
 " -------------airline settings---------------
 set laststatus=2
 let g:airline_powerline_fonts=1
-" let g:lightline = {
-      " \ 'colorscheme': 'onedark',
-      " \ 'component': {
-      " \   'readonly': '%{&readonly?"":""}',
-      " \ },
-      " \ 'separator': { 'left': '|', 'right': '|' },
-      " \ 'subseparator': { 'left': '<', 'right': '>' }
-      " \ }
 let g:airline_symbols = {}
 
 
 let g:lightline = {
       \ 'colorscheme': 'jellybeans',
       \ 'component': {
-      \   'readonly': '%{&readonly?"":""}',
+      \   'readonly': '%{&readonly?"🔐":""}',
       \ },
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' }
@@ -134,11 +126,11 @@ let g:multi_cursor_quit_key='<Esc>'
 
 " -------------- git---------------------------
 set updatetime=50
-let g:gitgutter_sign_added = '＋'
-let g:gitgutter_sign_modified = '☆'
-let g:gitgutter_sign_removed = '✖'
-let g:gitgutter_sign_removed_first_line = '^^'
-let g:gitgutter_sign_modified_removed = 'ww'
+let g:gitgutter_sign_added = '😏'
+let g:gitgutter_sign_modified = '😵'
+let g:gitgutter_sign_removed = '😡'
+let g:gitgutter_sign_removed_first_line = '✋'
+let g:gitgutter_sign_modified_removed = '😳'
 let g:airline#extensions#hunks#enabled=0
 
 " -------------emmet-settings--------------------
@@ -162,6 +154,9 @@ let g:ctrlp_buffer_func = {
     \ 'exit':  'Leave_ctrlp',
     \ }
 
+" ----------- 微信小程序代码高亮 --------------------
+au BufRead,BufNewFile *.wpy setlocal filetype=vue.html.javascript.css
+
 func! Enter_ctrlp()
     set laststatus=0
 endfunc
@@ -171,3 +166,7 @@ func! Leave_ctrlp()
 endfunc
 map <Leader>r :CtrlPMRUFiles<CR>
 
+" ---------------- ale settings ----------------------
+
+let g:ale_sign_error = '🌚'
+let g:ale_sign_warning = '🌝'
