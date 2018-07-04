@@ -1,3 +1,6 @@
+" just fix issue https://github.com/macvim-dev/macvim/issues/705
+" on macvim snapshot-149: MacVim Snapshot 149
+:silent! pyx import sys
 set hlsearch                  "高亮度反白
 set autoindent                "自动缩排
 set ruler                     "可显示最后一行的状态
@@ -48,12 +51,8 @@ Plug 'Raimondi/delimitMate'
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle'}
 Plug 'w0rp/ale'
-" 这里在console运行会失败
-if has("gui_running")
-    Plug 'SirVer/ultisnips'
-    Plug 'honza/vim-snippets'
-endif
-" 这里在console运行会失败
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'sheerun/vim-polyglot'
 Plug 'fatih/vim-go'
 Plug 'mattn/emmet-vim'
@@ -65,9 +64,8 @@ Plug 'tpope/vim-fugitive'
 " Plug 'styled-components/vim-styled-components'
 Plug 'wakatime/vim-wakatime'
 
-" Plug '/usr/local/opt/fzf'
-" Plug 'junegunn/fzf.vim'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim', { 'on': 'Files' }
 Plug 'mileszs/ack.vim'
 
 " color schema
@@ -98,6 +96,8 @@ let g:lightline = {
       \ 'subseparator': { 'left': '', 'right': '' }
       \ }
 " -------------fzf and ag-settings---------------------
+" set the line below to your fish config
+" set -g -x FZF_DEFAULT_COMMAND 'ag --hidden --ignore .git -g ""'
 map <Leader>t :NERDTreeToggle<CR>
 nmap <c-p> :Files<CR>
 if executable('ag')
@@ -146,25 +146,8 @@ if ! has('gui_running')
     colorscheme atom-dark-256
 endif
 
-" -------------ctrlp-settings---------------------
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|compiled\|dist'
-let g:ctrlp_open_new_file = 't'
-let g:ctrlp_buffer_func = {
-    \ 'enter': 'Enter_ctrlp',
-    \ 'exit':  'Leave_ctrlp',
-    \ }
-
 " ----------- 微信小程序代码高亮 --------------------
 au BufRead,BufNewFile *.wpy setlocal filetype=vue.html.javascript.css
-
-func! Enter_ctrlp()
-    set laststatus=0
-endfunc
-
-func! Leave_ctrlp()
-    set laststatus=2
-endfunc
-map <Leader>r :CtrlPMRUFiles<CR>
 
 " ---------------- ale settings ----------------------
 
