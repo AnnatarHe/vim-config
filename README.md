@@ -2,11 +2,17 @@
 
 这是我个人的 vim 配置文件。
 
+进入 vim 安装：
+
+```
+:PlugInstall
+```
+
 ## 其他
 
 推荐安装 [Fria Code Font](https://github.com/tonsky/FiraCode) 作为编程字体。它有很多漂亮的符号
 
-主题样式是 Dracula Theme
+主题样式是 Ayu Theme
 
 请首先安装 [fzf](https://github.com/junegunn/fzf) 和 [ag](https://github.com/ggreer/the_silver_searcher)
 
@@ -24,9 +30,9 @@
 
 `;p` 从系统剪贴板粘贴
 
-`Ctrl-p` 搜索
+`Ctrl-p` 文件名搜索
 
-`;f` 行内搜索
+`;f` 全局搜索
 
 Screenshot:
 
