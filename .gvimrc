@@ -1,10 +1,20 @@
-set linespace=20
+set linespace=15
 set transparency=1
 set macligatures
-set guifont=Fira\ Code:h14
+set antialias
+set guifont=Fira\ Code:h16
+
+set termguicolors
+let ayucolor="mirage"
+let ayucolor="dark"
+colorscheme ayu
+
 " set guifont=Operator\ Mono:h14
-" set guifont=Hack:h14
+" set guifont=Hack:h16
 " colorscheme atom-dark
 " colorscheme dracula
 " colorscheme spring-night
-colorscheme onedark
+" colorscheme onedark
+
+" set cursorline
+
