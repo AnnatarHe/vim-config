@@ -1,6 +1,6 @@
 " just fix issue https://github.com/macvim-dev/macvim/issues/705
 " on macvim snapshot-149: MacVim Snapshot 149
-:silent! pyx import sys
+" :silent! pyx import sys
 set hlsearch                  "高亮度反白
 set autoindent                "自动缩排
 set ruler                     "可显示最后一行的状态
@@ -51,10 +51,13 @@ Plug 'Raimondi/delimitMate'
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle'}
 Plug 'w0rp/ale'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+
+if has('gui_running')
+  Plug 'SirVer/ultisnips'
+  Plug 'honza/vim-snippets'
+endif
 Plug 'sheerun/vim-polyglot'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'mattn/emmet-vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'ervandew/supertab'
@@ -63,6 +66,9 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-fugitive'
 " Plug 'styled-components/vim-styled-components'
 Plug 'wakatime/vim-wakatime'
+" Plug 'Shougo/deoplete.nvim'
+" Plug 'roxma/nvim-yarp'
+" Plug 'roxma/vim-hug-neovim-rpc'
 
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim', { 'on': 'Files' }
@@ -73,6 +79,7 @@ Plug 'rhysd/vim-color-spring-night'
 Plug 'gosukiwi/vim-atom-dark'
 Plug 'dracula/vim'
 Plug 'joshdick/onedark.vim'
+Plug 'ayu-theme/ayu-vim' " or other package manager
 call plug#end()
 filetype plugin indent on
 
@@ -148,6 +155,9 @@ endif
 
 " ----------- 微信小程序代码高亮 --------------------
 au BufRead,BufNewFile *.wpy setlocal filetype=vue.html.javascript.css
+
+" ----------- deoplete ------------------------------
+" let g:deoplete#enable_at_startup = 1
 
 " ---------------- ale settings ----------------------
 
