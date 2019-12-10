@@ -56,7 +56,7 @@ if has('gui_running')
   Plug 'SirVer/ultisnips'
   Plug 'honza/vim-snippets'
 endif
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'mattn/emmet-vim'
 Plug 'terryma/vim-multiple-cursors'
@@ -64,6 +64,7 @@ Plug 'ervandew/supertab'
 Plug 'tpope/vim-surround'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-fugitive'
+Plug 'jparise/vim-graphql'
 " Plug 'styled-components/vim-styled-components'
 Plug 'wakatime/vim-wakatime'
 " Plug 'Shougo/deoplete.nvim'
@@ -163,3 +164,7 @@ au BufRead,BufNewFile *.wpy setlocal filetype=vue.html.javascript.css
 
 let g:ale_sign_error = '🌚'
 let g:ale_sign_warning = '🌝'
+
+set emoji
+set fixendofline
+
