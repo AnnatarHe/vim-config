@@ -26,6 +26,7 @@ set nowritebackup
 set nobackup
 set noswapfile
 set noeb
+set lcs+=space:·
 let mapleader=";"
 vnoremap <Leader>y "+y
 nmap <Leader>p "+p
@@ -58,6 +59,7 @@ if has('gui_running')
 endif
 " Plug 'sheerun/vim-polyglot'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'govim/govim'
 Plug 'mattn/emmet-vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'ervandew/supertab'
@@ -66,7 +68,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'jparise/vim-graphql'
 " Plug 'styled-components/vim-styled-components'
-Plug 'wakatime/vim-wakatime'
+" Plug 'wakatime/vim-wakatime'
 " Plug 'Shougo/deoplete.nvim'
 " Plug 'roxma/nvim-yarp'
 " Plug 'roxma/vim-hug-neovim-rpc'
@@ -80,7 +82,7 @@ Plug 'rhysd/vim-color-spring-night'
 Plug 'gosukiwi/vim-atom-dark'
 Plug 'dracula/vim'
 Plug 'joshdick/onedark.vim'
-Plug 'ayu-theme/ayu-vim' " or other package manager
+Plug 'ayu-theme/ayu-vim'
 call plug#end()
 filetype plugin indent on
 
@@ -96,13 +98,11 @@ let g:airline_symbols = {}
 
 
 let g:lightline = {
-      \ 'colorscheme': 'jellybeans',
+      \ 'colorscheme': 'one',
       \ 'component': {
       \   'readonly': '%{&readonly?"🔐":""}',
-      \ },
-      \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '', 'right': '' }
       \ }
+    \ }
 " -------------fzf and ag-settings---------------------
 " set the line below to your fish config
 " set -g -x FZF_DEFAULT_COMMAND 'ag --hidden --ignore .git -g ""'
@@ -160,6 +160,9 @@ au BufRead,BufNewFile *.wpy setlocal filetype=vue.html.javascript.css
 " ----------- deoplete ------------------------------
 " let g:deoplete#enable_at_startup = 1
 
+" ----------- vim-go --------------------------------
+let g:go_fmt_command = "goimports"
+
 " ---------------- ale settings ----------------------
 
 let g:ale_sign_error = '🌚'
@@ -167,4 +170,4 @@ let g:ale_sign_warning = '🌝'
 
 set emoji
 set fixendofline
-
+set rtp+=/usr/local/opt/fzf
