@@ -26,6 +26,7 @@ set nowritebackup
 set nobackup
 set noswapfile
 set noeb
+set rtp+=/opt/homebrew/opt/fzf
 set lcs+=space:·
 let mapleader=";"
 vnoremap <Leader>y "+y
@@ -68,12 +69,12 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'jparise/vim-graphql'
 " Plug 'styled-components/vim-styled-components'
-" Plug 'wakatime/vim-wakatime'
-" Plug 'Shougo/deoplete.nvim'
-" Plug 'roxma/nvim-yarp'
+Plug 'wakatime/vim-wakatime'
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
 " Plug 'roxma/vim-hug-neovim-rpc'
 
-Plug '/usr/local/opt/fzf'
+Plug '/opt/homebrew/bin/fzf'
 Plug 'junegunn/fzf.vim', { 'on': 'Files' }
 Plug 'mileszs/ack.vim'
 
@@ -111,6 +112,7 @@ nmap <c-p> :Files<CR>
 if executable('ag')
     let g:ackprg = 'ag --vimgrep --ignore node_modules --ignore dist'
 endif
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 " search lines in files
 cnoreabbrev Ack Ack!
 nnoremap <Leader>f :Ack!<Space>
@@ -170,4 +172,3 @@ let g:ale_sign_warning = '🌝'
 
 set emoji
 set fixendofline
-set rtp+=/usr/local/opt/fzf
